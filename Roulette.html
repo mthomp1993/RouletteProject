@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Roulette Animation</title>
+        <link rel="stylesheet" href= "RouletteCSS.css">
+    </head>
+    <body>
+
+
+<img class="Header" src="mFortuneHeader.png" alt="" />
+
+
+<div class="Container">
+
+ <img class="Green" src="GreenBackground.png" alt="" />
+
+
+ <form>
+<div class = "FormStyle">
+<legend>Question:</legend>
+<input type="text" name="Question" class ="BoxStyle">
+</div>
+</form>
+
+<form>
+<div class = "FormAnsStyle">
+<legend>Answers:</legend>
+<input type="text" name="Answer" id = "one" class ="BoxStyle2" placeholder ="Answer">
+<input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer"><br>
+<input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer">
+<input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer"><br>
+<input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer">
+<input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer"><br>
+<input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer">
+<input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer"><br>
+<input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer">
+<input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer"><br>
+</div>
+</form>
+
+<div id="Text">
+    
+</div>
+
+<script>
+
+setInterval(function(){populateboard()},100);
+
+function populateboard(){
+
+document.getElementById("Text").innerHTML = document.getElementById("one").value;
+
+}
+</script>
+
+
+ <img class="Chips" src="Chips.png" alt="" />
+
+ <img class="Board" src="RouletteBoard.png" alt="" />
+
+ <img class = "Buttons" src="ResetButton.png"> <a href='javascript: reset();'></a>
+
+  <img class = "Buttons" src="SpinButton.png"> <a href='javascript: Spin();'></a>
+
+ <img class="StaticWheel" src="RouletteWheelStatic.png" alt="" />
+
+<img class ="TheWheelDecides" src="TheWheelDecides.png" alt="" />
+
+</div>
+
+
+<img class="Footer" src="mFortuneFooter.png" alt="" />
+
+
+
+
+
+
+
+
+        
+        <script src="js/main.js"></script>
+    </body>
+</html>

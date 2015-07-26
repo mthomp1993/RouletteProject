@@ -1,0 +1,123 @@
+
+html, body{
+
+	width:100%;
+	height:100%;
+	margin: 0;
+}
+
+.Container{
+
+position:relative;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+}
+
+
+.Green{
+
+  position:relative;
+  width:100%;
+  height:100%;
+
+}
+
+.Buttons{
+ position:absolute;
+ width:100%;
+ height:100%;
+ top:0;
+
+}
+
+.TheWheelDecides{
+ position:absolute;
+ width:100%;
+ height:100%;
+ top:0;
+
+}
+
+
+.Chips{
+
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+
+}
+
+.Board{
+
+ position:absolute;
+ width:100%;
+ height:100%;
+ top:0;
+
+}
+
+
+.StaticWheel{
+ position:absolute; 
+ width:100%;
+ height:100%;
+ top:0;
+  
+}
+
+.FormStyle{
+
+ position:absolute; 
+ top:25%;
+ z-index: 1;
+ margin-left: 5%;
+
+}
+
+.FormAnsStyle{
+
+ position:absolute; 
+ top:30%;
+ z-index: 1;
+ margin-left: 5%;
+
+}
+
+.BoxStyle{
+
+  width:300px;
+
+}
+
+.BoxStyle2{
+
+  width:140px;
+  margin-right: 10px;
+  margin-top: 5px;
+
+}
+
+
+.Header{
+
+	position:absolute;
+	width:100%;
+  height:100%;
+  z-index: 1;
+
+ }
+
+ .Footer{
+
+	position:absolute;
+	width:100%;
+  height:100%;
+  bottom:0;
+
+
+ }
