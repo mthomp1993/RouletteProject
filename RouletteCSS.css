@@ -94,6 +94,23 @@ height:100%;
 
 }
 
+#Text{
+position:absolute; 
+top:42%;
+left:55%;
+z-index: 1;
+}
+
+#Text2{
+position:absolute; 
+top:42%;
+left:82%;
+z-index: 1;
+}
+
+
+
+
 .BoxStyle2{
 
   width:140px;

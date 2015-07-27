@@ -29,7 +29,7 @@
 <div class = "FormAnsStyle">
 <legend>Answers:</legend>
 <input type="text" name="Answer" id = "one" class ="BoxStyle2" placeholder ="Answer">
-<input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer"><br>
+<input type="text" name="Answer" id = "two" class ="BoxStyle2" placeholder ="Answer"><br>
 <input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer">
 <input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer"><br>
 <input type="text" name="Answer" class ="BoxStyle2" placeholder ="Answer">
@@ -45,6 +45,11 @@
     
 </div>
 
+<div id="Text2">
+    
+</div>
+
+
 <script>
 
 setInterval(function(){populateboard()},100);
@@ -52,6 +57,7 @@ setInterval(function(){populateboard()},100);
 function populateboard(){
 
 document.getElementById("Text").innerHTML = document.getElementById("one").value;
+document.getElementById("Text2").innerHTML = document.getElementById("two").value;
 
 }
 </script>
