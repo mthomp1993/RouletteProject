@@ -94,18 +94,10 @@ height:100%;
 
 }
 
-#Text{
-position:absolute; 
-top:42%;
-left:55%;
-z-index: 1;
-}
+#myCanvas{
+ position:absolute; 
+ top:0;
 
-#Text2{
-position:absolute; 
-top:42%;
-left:82%;
-z-index: 1;
 }
 
 
