@@ -82,6 +82,18 @@ height:100%;
   
 }
 
+.RotateCanvas{
+position:absolute; 
+top:0;
+-webkit-animation:BigCircleRotation 2s linear infinite;
+-moz-animation:BigCircleRotation 2s linear infinite;
+animation:BigCircleRotation 2s linear infinite;
+webkit-animation-direction: normal; /* Chrome, Safari, Opera */
+animation-direction: normal;
+transform-origin: 73.14% 43.25%;
+
+}
+
 .RotatingWheel{
 
 position:absolute; 

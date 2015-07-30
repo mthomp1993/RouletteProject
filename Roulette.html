@@ -66,7 +66,12 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 
    document.getElementById("WheelId").className = "RotatingWheel";
 
+   document.getElementById("myCanvas").className = "RotateCanvas"
+
    setTimeout(function(){ document.getElementById("WheelId").className = "StaticWheel"; }, 8000);
+
+   setTimeout(function(){ document.getElementById("myCanvas").className = ""; }, 8000);
+
 
   }
 
