@@ -10,10 +10,9 @@
     <body>
 
 
-<img class="Header" src="mFortuneHeader.png" alt="" />
-
-
 <div class="Container">
+
+  <img class="Header" src="mFortuneHeader.png" alt="" />  
 
  <img class="Green" src="GreenBackground.png" alt="" />
 
@@ -25,7 +24,7 @@
 </div>
 </form>
 
-<form>
+<form id = "AnswerForm">
 <div class = "FormAnsStyle">
 <legend>Answers:</legend>
 <input type="text" name="Answer" id = "one" class ="BoxStyle2" placeholder ="Answer"
@@ -63,10 +62,9 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
   function Spin(){ 
 
 
-
    document.getElementById("WheelId").className = "RotatingWheel";
 
-   document.getElementById("myCanvas").className = "RotateCanvas"
+   document.getElementById("myCanvas").className = "RotateCanvas";
 
    setTimeout(function(){ document.getElementById("WheelId").className = "StaticWheel"; }, 8000);
 
@@ -81,12 +79,37 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
   
 <img class ="StaticWheel" src="RouletteWheelStatic.png" alt="" id = "WheelId" />
 
-  <canvas id="myCanvas" width="1000" height="1000" style="width:100%; height:100%">
+  <canvas id="myCanvas" width="1000" height="1000">
 Your browser does not support the HTML5 canvas tag.
 </canvas>
 
-<script>
-function populateboard(){
+<script> 
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+
+//Used when positioning circle in centre of cavas.
+var x = canvas.width / 2;
+var y = canvas.height / 2;
+
+var sections = 20;
+
+
+// size of a pie : it is an angle in radians
+var pieAngle = 2 * Math.PI / sections;
+
+// how thick you want a segment
+var radius = 200;
+
+
+
+function populateboard() {
+
+context.clearRect(0,0,canvas.width,canvas.height);
+var namearray = [];
+var valuearray = [];
 
 var name1 = document.getElementById("one").value;
 var name2 = document.getElementById("two").value;
@@ -99,8 +122,6 @@ var name8 = document.getElementById("eight").value;
 var name9 = document.getElementById("nine").value;
 var name10 = document.getElementById("ten").value;
 
-var namearray = [];
-
 namearray.push(name1);
 namearray.push(name2);
 namearray.push(name3);
@@ -112,233 +133,53 @@ namearray.push(name8);
 namearray.push(name9);
 namearray.push(name10);
 
-
-var NumNames = 0;
-
 for (var i = 0; i < namearray.length; i++) {
     
     if (namearray[i] != "") {
 
-      NumNames++;
+       valuearray.push(namearray[i]);
     }
-}
+} 
 
-if(NumNames == 1){
+var answer = 0;
+    
+    for (var i = 0; i < sections; i++) {
+        context.beginPath();
+        context.moveTo(x, y);
+        context.arc(x, y, radius, i*pieAngle, (i+1)*pieAngle, false);
+        context.save();
+        context.translate( x, y );
+        context.rotate((i*pieAngle));
+        context.font = "16px serif";
+        context.fillStyle = "White"; // red
+        if(answer >= valuearray.length){
 
-var canvas = document.getElementById('myCanvas');
-var context = canvas.getContext('2d');
-context.clearRect(0,0,canvas.width,canvas.height);
-context.fillStyle = "White";
-context.font = "16px sans-serif";
-context.textBaseline = 'top';
-context.fillText(document.getElementById("one").value, 550, 420);
-context.save();
-context.setTransform (1, -0.3, 0, 1, 0, 0);
-context.fillText(document.getElementById("one").value, 560, 650);
-context.restore();
-context.save();
-context.setTransform (1, -0.7, 0, 1, 0, 0);
-context.fillText(document.getElementById("one").value, 580, 945);
-context.restore();
-context.save();
-context.setTransform (1, 0.3, 0, 1, 0, 0);
-context.fillText(document.getElementById("one").value, 555, 195);
-context.restore();
-context.save();
-context.setTransform (1, 0.7, 0, 1, 0, 0);
-context.fillText(document.getElementById("one").value, 580, -100);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(-Math.PI/2);
-context.fillText(document.getElementById("one").value, -120, 215);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(45-Math.PI/180);
-context.fillText(document.getElementById("one").value, -130,-240);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(90*Math.PI/180);
-context.fillText(document.getElementById("one").value, -270,-235);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(75*Math.PI/180);
-context.fillText(document.getElementById("one").value, -215,-245);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(105*Math.PI/180);
-context.fillText(document.getElementById("one").value, -330,-215);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(120*Math.PI/180);
-context.fillText(document.getElementById("one").value, -365,-175);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(135*Math.PI/180);
-context.fillText(document.getElementById("one").value, -400,-135);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(160*Math.PI/180);
-context.fillText(document.getElementById("one").value, -415,-25);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(180*Math.PI/180);
-context.fillText(document.getElementById("one").value, -400,55);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(200*Math.PI/180);
-context.fillText(document.getElementById("one").value, -370,130);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(220*Math.PI/180);
-context.fillText(document.getElementById("one").value, -325,190);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(240*Math.PI/180);
-context.fillText(document.getElementById("one").value, -245,225);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(250*Math.PI/180);
-context.fillText(document.getElementById("one").value, -215,220);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(290*Math.PI/180);
-context.fillText(document.getElementById("one").value, -50,190);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(305*Math.PI/180);
-context.fillText(document.getElementById("one").value, -10,140);
-context.restore();
-context.save();
+          answer = 0;
+        }
 
-}
+        if(valuearray[answer] != null ){
 
-if(NumNames == 2){
+        context.fillText( valuearray[answer], 100, -10);
+         }
 
-var canvas = document.getElementById('myCanvas');
-var context = canvas.getContext('2d');
-context.clearRect(0,0,canvas.width,canvas.height);
-context.fillStyle = "White";
-context.font = "16px sans-serif";
-context.textBaseline = 'top';
-context.fillText(document.getElementById("one").value, 550, 420);
-context.save();
-context.setTransform (1, -0.3, 0, 1, 0, 0);
-context.fillText(document.getElementById("two").value, 560, 650);
-context.restore();
-context.save();
-context.setTransform (1, -0.7, 0, 1, 0, 0);
-context.fillText(document.getElementById("one").value, 580, 945);
-context.restore();
-context.save();
-context.setTransform (1, 0.3, 0, 1, 0, 0);
-context.fillText(document.getElementById("two").value, 555, 195);
-context.restore();
-context.save();
-context.setTransform (1, 0.7, 0, 1, 0, 0);
-context.fillText(document.getElementById("one").value, 580, -100);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(-Math.PI/2);
-context.fillText(document.getElementById("two").value, -120, 215);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(45-Math.PI/180);
-context.fillText(document.getElementById("one").value, -130,-240);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(90*Math.PI/180);
-context.fillText(document.getElementById("two").value, -270,-235);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(75*Math.PI/180);
-context.fillText(document.getElementById("one").value, -215,-245);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(105*Math.PI/180);
-context.fillText(document.getElementById("two").value, -330,-215);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(120*Math.PI/180);
-context.fillText(document.getElementById("one").value, -365,-175);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(135*Math.PI/180);
-context.fillText(document.getElementById("two").value, -400,-135);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(160*Math.PI/180);
-context.fillText(document.getElementById("one").value, -415,-25);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(180*Math.PI/180);
-context.fillText(document.getElementById("two").value, -400,55);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(200*Math.PI/180);
-context.fillText(document.getElementById("one").value, -370,130);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(220*Math.PI/180);
-context.fillText(document.getElementById("two").value, -325,190);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(240*Math.PI/180);
-context.fillText(document.getElementById("one").value, -245,225);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(250*Math.PI/180);
-context.fillText(document.getElementById("two").value, -215,220);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(290*Math.PI/180);
-context.fillText(document.getElementById("one").value, -50,190);
-context.restore();
-context.save();
-context.translate((canvas.width/2),(canvas.height/2));
-context.rotate(305*Math.PI/180);
-context.fillText(document.getElementById("two").value, -10,140);
-context.restore();
-context.save();
 
- }
-}
+        answer++;
+        context.restore();
+        
+    }
+  }
+
 </script>
  
 <img class ="TheWheelDecides" src="TheWheelDecides.png" alt="" />
 
+
+<img class="Footer" src="mFortuneFooter.png" alt="" />
+
 </div>
 
 
-<img class="Footer" src="mFortuneFooter.png" alt="" />
+
 
 
 

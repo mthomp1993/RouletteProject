@@ -1,9 +1,13 @@
 
-html, body{
+body{
 
 	width:100%;
 	height:100%;
-	margin: 0;
+  padding: 10%;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
 }
 
 .Container{
@@ -11,10 +15,13 @@ html, body{
 position:relative;
 top:0;
 left:0;
-width:100%;
-height:100%;
+width:auto;
+height:auto;
+max-height:80%;
+max-width:80%;
 
 }
+
 
 
 .Green{
@@ -84,15 +91,34 @@ height:100%;
 
 .RotateCanvas{
 position:absolute; 
-top:0;
--webkit-animation:BigCircleRotation 2s linear infinite;
--moz-animation:BigCircleRotation 2s linear infinite;
-animation:BigCircleRotation 2s linear infinite;
+ width:100%;
+ top:-14%;
+ left:22.8%;
+  transform: rotate(81deg);
+-webkit-animation:CanvasRotation 2s linear infinite;
+-moz-animation:CanvasRotation 2s linear infinite;
+animation:CanvasRotation 2s linear infinite;
 webkit-animation-direction: normal; /* Chrome, Safari, Opera */
 animation-direction: normal;
-transform-origin: 73.14% 43.25%;
+transform-origin: 50% 50%;
 
 }
+
+@-moz-keyframes CanvasRotation { 100% { -moz-transform: rotate(441deg); } }
+@-webkit-keyframes CanvasRotation { 100% { -webkit-transform: rotate(441deg); } }
+@keyframes CanvasRotation { 100%  {transform:rotate(441deg); } }
+
+
+#myCanvas{
+ position:absolute; 
+ width:100%;
+ top:-14%;
+ left:22.8%;
+  transform: rotate(81deg);
+}
+
+
+
 
 .RotatingWheel{
 
@@ -108,6 +134,9 @@ animation:BigCircleRotation 2s linear infinite;
 webkit-animation-direction: normal; /* Chrome, Safari, Opera */
 animation-direction: normal;
 transform-origin: 73.14% 43.25%;
+-ms-transform-origin: 73.14% 43.25%; 
+-webkit-transform-origin: 73.14% 43.25%; /* Chrome, Safari, Opera */
+
 }
 
 @-moz-keyframes BigCircleRotation { 100% { -moz-transform: rotate(360deg); } }
@@ -138,13 +167,12 @@ transform-origin: 73.14% 43.25%;
 
 }
 
-#myCanvas{
- position:absolute; 
- top:0;
+@media (max-width: 480px) { 
+        .BoxStyle {
+         width:100px;
+        }
 
-}
-
-
+    }
 
 
 .BoxStyle2{
@@ -154,6 +182,13 @@ transform-origin: 73.14% 43.25%;
   margin-top: 5px;
 
 }
+
+@media (max-width: 480px) { 
+      .BoxStyle2 {
+
+           width:100px;
+        }
+      }
 
 
 .Header{
