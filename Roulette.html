@@ -55,21 +55,46 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
  <img class="Board" src="RouletteBoard.png" alt="" />
 
  <input type="image" src="reset.png" name="ResetButton" class="RButton" id="ResetButton"  onClick="Reset();" />
-  
 
  <script>
 
+ var sectionAnswers = [];
+
   function Spin(){ 
 
+
+   var sections = 20;
+
+   var angle = 360/sections;
+
+   var ball = document.getElementById("BallID");
+
+   var RandomSection = (Math.floor(Math.random() * sections) + 1); 
+
+   var requiredRotation =(sections - RandomSection) * angle;
+
+   alert(sectionAnswers[RandomSection]);
+
+   alert(requiredRotation);
 
    document.getElementById("WheelId").className = "RotatingWheel";
 
    document.getElementById("myCanvas").className = "RotateCanvas";
 
+   var overallRotation = -(requiredRotation  + 1350);
+
+   ball.removeAttribute('style');
+
+   var css = '-webkit-transform: rotate(' + overallRotation  + 'deg);';
+
+     ball.setAttribute(
+        'style', css
+    );
+
+ 
    setTimeout(function(){ document.getElementById("WheelId").className = "StaticWheel"; }, 8000);
 
    setTimeout(function(){ document.getElementById("myCanvas").className = ""; }, 8000);
-
 
   }
 
@@ -78,6 +103,8 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 <input type="image" src="Spin.png" name="SpinButton" class="SButton" id="SpinButton"  onClick="Spin();" />
   
 <img class ="StaticWheel" src="RouletteWheelStatic.png" alt="" id = "WheelId" />
+
+<img class ="Ball" src="RouletteBallSpinning.png" alt="" id = "BallID" />
 
   <canvas id="myCanvas" width="1000" height="1000">
 Your browser does not support the HTML5 canvas tag.
@@ -142,6 +169,7 @@ for (var i = 0; i < namearray.length; i++) {
 } 
 
 var answer = 0;
+var remaining = sections%valuearray.length;
     
     for (var i = 0; i < sections; i++) {
         context.beginPath();
@@ -152,16 +180,32 @@ var answer = 0;
         context.rotate((i*pieAngle));
         context.font = "16px serif";
         context.fillStyle = "White"; // red
+
+        if(i == 0){
+
+          context.fillStyle = "Black"; // red
+        }
+
         if(answer >= valuearray.length){
 
           answer = 0;
         }
+         
+        if(valuearray[answer] != null )
+        {
 
-        if(valuearray[answer] != null ){
+          if(remaining > 0)
+          {
 
-        context.fillText( valuearray[answer], 100, -10);
+              context.fillText( "Try Again", 100, -10);
+              sectionAnswers[i] = "Try Again"; 
+              remaining--;
+          }
+          else{
+                context.fillText( valuearray[answer], 100, -10);
+                sectionAnswers[i] = valuearray[answer]; 
+               }
          }
-
 
         answer++;
         context.restore();

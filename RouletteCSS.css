@@ -89,24 +89,38 @@ max-width:80%;
   
 }
 
+
+
+#BallID{
+ position:absolute; 
+ width:100%;
+ height:100%;
+ top:0;
+
+-webkit-transition: -webkit-transform 8s ease-out;
+transform-origin: 73.14% 43.25%;
+-ms-transform-origin: 73.14% 43.25%; 
+-webkit-transform-origin: 73.14% 43.25%; /* Chrome, Safari, Opera */
+}
+
 .RotateCanvas{
 position:absolute; 
  width:100%;
  top:-14%;
  left:22.8%;
-  transform: rotate(81deg);
--webkit-animation:CanvasRotation 2s linear infinite;
--moz-animation:CanvasRotation 2s linear infinite;
-animation:CanvasRotation 2s linear infinite;
+transform: rotate(81deg);
+-webkit-animation:CanvasRotation 8s ease-out infinite;
+-moz-animation:CanvasRotation 8s ease-out infinite;
+animation:CanvasRotation 8s ease-out infinite;
 webkit-animation-direction: normal; /* Chrome, Safari, Opera */
 animation-direction: normal;
 transform-origin: 50% 50%;
 
 }
 
-@-moz-keyframes CanvasRotation { 100% { -moz-transform: rotate(441deg); } }
-@-webkit-keyframes CanvasRotation { 100% { -webkit-transform: rotate(441deg); } }
-@keyframes CanvasRotation { 100%  {transform:rotate(441deg); } }
+@-moz-keyframes CanvasRotation { 100% { -moz-transform: rotate(1521deg); } }
+@-webkit-keyframes CanvasRotation { 100% { -webkit-transform: rotate(1521deg); } }
+@keyframes CanvasRotation { 100%  {transform:rotate(1521deg); } }
 
 
 #myCanvas{
@@ -128,9 +142,9 @@ height:100%;
 top:0;
 
 
--webkit-animation:BigCircleRotation 2s linear infinite;
--moz-animation:BigCircleRotation 2s linear infinite;
-animation:BigCircleRotation 2s linear infinite;
+-webkit-animation:BigCircleRotation 8s ease-out infinite;
+-moz-animation:BigCircleRotation 8s ease-out infinite;
+animation:BigCircleRotation 8s ease-out infinite;
 webkit-animation-direction: normal; /* Chrome, Safari, Opera */
 animation-direction: normal;
 transform-origin: 73.14% 43.25%;
@@ -139,9 +153,9 @@ transform-origin: 73.14% 43.25%;
 
 }
 
-@-moz-keyframes BigCircleRotation { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes BigCircleRotation { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes BigCircleRotation { 100%  {transform:rotate(360deg); } }
+@-moz-keyframes BigCircleRotation { 100% { -moz-transform: rotate(1440deg); } }
+@-webkit-keyframes BigCircleRotation { 100% { -webkit-transform: rotate(1440deg); } }
+@keyframes BigCircleRotation { 100%  {transform:rotate(1440deg); } }
 
 .FormStyle{
 
