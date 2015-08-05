@@ -20,7 +20,7 @@
  <form>
 <div class = "FormStyle">
 <legend>Question:</legend>
-<input type="text" name="Question" class ="BoxStyle">
+<input type="text" name="Question" class ="BoxStyle" id = "UserQuestion" value = "Who">
 </div>
 </form>
 
@@ -58,10 +58,34 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 
  <script>
 
+ function popup(answer){
+
+ document.getElementById("Quest").innerHTML = 
+                   "Q:" + document.getElementById("UserQuestion").value + "?";
+
+ document.getElementById("Ans").innerHTML = "A:"+ answer +"!";
+
+ var popUpElement = document.getElementById("Pop");
+
+ popUpElement.removeAttribute('style'); 
+
+
+ }
+
+ function closePopup(){
+
+ var popUpElement = document.getElementById("Pop");
+
+ popUpElement.setAttribute("style", "display:none;");
+
+ }
+ </script>
+
+ <script>
+
  var sectionAnswers = [];
 
   function Spin(){ 
-
 
    var sections = 20;
 
@@ -81,21 +105,30 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 
    document.getElementById("myCanvas").className = "RotateCanvas";
 
-   var overallRotation = -(requiredRotation  + 1350);
+   var overallRotation = -(requiredRotation  + 990);
 
-   ball.removeAttribute('style');
+   ball.removeAttribute('style'); 
 
    var css = '-webkit-transform: rotate(' + overallRotation  + 'deg);';
 
-     ball.setAttribute(
-        'style', css
-    );
+   var resetcss = '-webkit-transition: -webkit-transform 0s ease-out;';
 
- 
+     ball.setAttribute( 'style', css);
+
    setTimeout(function(){ document.getElementById("WheelId").className = "StaticWheel"; }, 8000);
 
    setTimeout(function(){ document.getElementById("myCanvas").className = ""; }, 8000);
 
+   setTimeout(function(){ ball.setAttribute( 'style', resetcss); }, 8000);
+
+   setTimeout(function(){ popup(sectionAnswers[RandomSection]); }, 8000);
+
+
+
+
+
+
+   
   }
 
  </script>
@@ -105,6 +138,13 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 <img class ="StaticWheel" src="RouletteWheelStatic.png" alt="" id = "WheelId" />
 
 <img class ="Ball" src="RouletteBallSpinning.png" alt="" id = "BallID" />
+
+<div class ="popUp" id = "Pop" style="display:none;" >
+   <input type="image" src="close.png" name="CloseButton" class="popupclose" id="popupcloseId"  onclick="closePopup();" />
+   <img class ="popUpwheeldecides" src="TheWheelDecides.png" alt="" />
+   <div class = "Question" id = "Quest"> Q: </div>
+   <div class = "Answer" id = "Ans">A: </div>
+</div>
 
   <canvas id="myCanvas" width="1000" height="1000">
 Your browser does not support the HTML5 canvas tag.
