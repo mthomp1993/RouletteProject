@@ -1,9 +1,8 @@
 
 body{
 
-	width:100%;
-	height:100%;
-  padding: 10%;
+	width:80%;
+	height:80%;
   top:0;
   bottom:0;
   left:0;
@@ -17,18 +16,14 @@ top:0;
 left:0;
 width:auto;
 height:auto;
-max-height:80%;
-max-width:80%;
 
 }
-
-
 
 .Green{
 
   position:relative;
   width:100%;
-  height:100%;
+  height:auto;
 
 }
 
@@ -97,6 +92,8 @@ max-width:80%;
  top:0;
 
 -webkit-transition: -webkit-transform 8s ease-out;
+-moz-transition: -moz-transform 8s ease-out;
+ transition: 8s ease-out;
 transform-origin: 73.14% 43.25%;
 -ms-transform-origin: 73.14% 43.25%; 
 -webkit-transform-origin: 73.14% 43.25%; /* Chrome, Safari, Opera */
@@ -117,9 +114,10 @@ position:absolute;
  top:-14%;
  left:22.8%;
 transform: rotate(81deg);
--webkit-animation:CanvasRotation 8s ease-out infinite;
--moz-animation:CanvasRotation 8s ease-out infinite;
-animation:CanvasRotation 8s ease-out infinite;
+-webkit-transform: rotate(81deg);
+-webkit-animation:CanvasRotation 8s ease-out;
+-moz-animation:CanvasRotation 8s ease-out;
+animation:CanvasRotation 8s ease-out;
 webkit-animation-direction: normal; /* Chrome, Safari, Opera */
 animation-direction: normal;
 transform-origin: 50% 50%;
@@ -137,6 +135,7 @@ transform-origin: 50% 50%;
  top:-14%;
  left:22.8%;
   transform: rotate(81deg);
+  -webkit-transform: rotate(81deg);
 }
 
 
@@ -183,7 +182,7 @@ transform-origin: 73.14% 43.25%;
 
 .BoxStyle{
 
-  width:300px;
+  width:500px;
 
 }
 
@@ -194,10 +193,17 @@ transform-origin: 73.14% 43.25%;
 
     }
 
+@media (max-width: 1500px) { 
+        .BoxStyle {
+         width:300px;
+        }
+
+    }
+
 
 .BoxStyle2{
 
-  width:140px;
+  width:250px;
   margin-right: 10px;
   margin-top: 5px;
 
@@ -207,6 +213,13 @@ transform-origin: 73.14% 43.25%;
       .BoxStyle2 {
 
            width:100px;
+        }
+      }
+
+@media (max-width: 1500px) { 
+      .BoxStyle2 {
+
+           width:150px;
         }
       }
 

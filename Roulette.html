@@ -10,6 +10,7 @@
     <body>
 
 
+
 <div class="Container">
 
   <img class="Header" src="mFortuneHeader.png" alt="" />  
@@ -20,7 +21,7 @@
  <form>
 <div class = "FormStyle">
 <legend>Question:</legend>
-<input type="text" name="Question" class ="BoxStyle" id = "UserQuestion" value = "Who">
+<input type="text" name="Question" class ="BoxStyle" id = "UserQuestion" value = "Who made the tea">
 </div>
 </form>
 
@@ -48,15 +49,20 @@ onKeyPress="populateboard()" onKeyUp="populateboard()">
 <input type="text" name="Answer" id = "ten" class ="BoxStyle2" placeholder ="Answer"
 onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 </div>
+ <input type="image" src="reset.png" name="ResetButton" class="RButton" id="ResetButton"  onClick="clear()" />
 </form>
 
  <img class="Chips" src="Chips.png" alt="" />
 
  <img class="Board" src="RouletteBoard.png" alt="" />
 
- <input type="image" src="reset.png" name="ResetButton" class="RButton" id="ResetButton"  onClick="Reset();" />
-
  <script>
+
+ function clear(){
+
+ 
+  document.getElementById("AnswerForm").reset();
+ }
 
  function popup(answer){
 
@@ -97,10 +103,6 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 
    var requiredRotation =(sections - RandomSection) * angle;
 
-   alert(sectionAnswers[RandomSection]);
-
-   alert(requiredRotation);
-
    document.getElementById("WheelId").className = "RotatingWheel";
 
    document.getElementById("myCanvas").className = "RotateCanvas";
@@ -109,9 +111,11 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 
    ball.removeAttribute('style'); 
 
-   var css = '-webkit-transform: rotate(' + overallRotation  + 'deg);';
+   var css = '-webkit-transform: rotate(' + overallRotation  + 'deg);' +
+    '-moz-transform: rotate(' + overallRotation  + 'deg);' ;
 
-   var resetcss = '-webkit-transition: -webkit-transform 0s ease-out;';
+   var resetcss = '-webkit-transition: -webkit-transform 0s ease-out;' +
+   '-moz-transition: -moz-transform 0s ease-out;';
 
      ball.setAttribute( 'style', css);
 
@@ -119,16 +123,10 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 
    setTimeout(function(){ document.getElementById("myCanvas").className = ""; }, 8000);
 
-   setTimeout(function(){ ball.setAttribute( 'style', resetcss); }, 8000);
+   setTimeout(function(){ ball.setAttribute( 'style', resetcss); }, 11000);
 
-   setTimeout(function(){ popup(sectionAnswers[RandomSection]); }, 8000);
+   setTimeout(function(){ popup(sectionAnswers[RandomSection]); }, 10000);
 
-
-
-
-
-
-   
   }
 
  </script>
@@ -221,10 +219,6 @@ var remaining = sections%valuearray.length;
         context.font = "16px serif";
         context.fillStyle = "White"; // red
 
-        if(i == 0){
-
-          context.fillStyle = "Black"; // red
-        }
 
         if(answer >= valuearray.length){
 
