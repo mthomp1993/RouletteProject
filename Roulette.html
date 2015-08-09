@@ -21,7 +21,7 @@
  <form>
 <div class = "FormStyle">
 <legend>Question:</legend>
-<input type="text" name="Question" class ="BoxStyle" id = "UserQuestion" value = "Who made the tea">
+<input type="text" name="Question" class ="BoxStyle" id = "UserQuestion" value = "Who made the tea" maxlength="30">
 </div>
 </form>
 
@@ -29,25 +29,25 @@
 <div class = "FormAnsStyle">
 <legend>Answers:</legend>
 <input type="text" name="Answer" id = "one" class ="BoxStyle2" placeholder ="Answer"
-onKeyPress="populateboard()" onKeyUp="populateboard()">
+onKeyPress="populateboard()" onKeyUp="populateboard()" maxlength="16">
 <input type="text" name="Answer" id = "two" class ="BoxStyle2" placeholder ="Answer" 
- onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
+ onKeyPress="populateboard()" onKeyUp="populateboard()"maxlength="16" ><br>
 <input type="text" name="Answer" id = "three"  class ="BoxStyle2" placeholder ="Answer"
-onKeyPress="populateboard()" onKeyUp="populateboard()">
+onKeyPress="populateboard()" onKeyUp="populateboard()" maxlength="16">
 <input type="text" name="Answer" id = "four"  class ="BoxStyle2" placeholder ="Answer"
-onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
+onKeyPress="populateboard()" onKeyUp="populateboard()" maxlength="16"><br>
 <input type="text" name="Answer" id = "five" class ="BoxStyle2" placeholder ="Answer"
-onKeyPress="populateboard()" onKeyUp="populateboard()">
+onKeyPress="populateboard()" onKeyUp="populateboard()" maxlength="16">
 <input type="text" name="Answer" id = "six" class ="BoxStyle2" placeholder ="Answer"
-onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
+onKeyPress="populateboard()" onKeyUp="populateboard()" maxlength="16"><br>
 <input type="text" name="Answer" id = "seven" class ="BoxStyle2" placeholder ="Answer"
-onKeyPress="populateboard()" onKeyUp="populateboard()">
+onKeyPress="populateboard()" onKeyUp="populateboard()" maxlength="16">
 <input type="text" name="Answer" id = "eight" class ="BoxStyle2" placeholder ="Answer"
-onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
+onKeyPress="populateboard()" onKeyUp="populateboard()" maxlength="16"><br>
 <input type="text" name="Answer" id = "nine" class ="BoxStyle2" placeholder ="Answer"
-onKeyPress="populateboard()" onKeyUp="populateboard()">
+onKeyPress="populateboard()" onKeyUp="populateboard()" maxlength="16">
 <input type="text" name="Answer" id = "ten" class ="BoxStyle2" placeholder ="Answer"
-onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
+onKeyPress="populateboard()" onKeyUp="populateboard()" maxlength="16"><br>
 </div>
  <input type="image" src="reset.png" name="ResetButton" class="RButton" id="ResetButton"  onClick="clear()" />
 </form>
@@ -57,6 +57,27 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
  <img class="Board" src="RouletteBoard.png" alt="" />
 
  <script>
+
+ function TextCase(){
+
+   var FormElements = document.getElementById('AnswerForm').elements;
+    
+   for(var i = 0; i < FormElements .length; i++)
+
+        {
+     
+           vString = FormElements[i].value;
+
+           vString = vString.toLowerCase();
+
+           vString = vString.charAt(0).toUpperCase() + vString.substring(1);
+
+           FormElements[i].value = vString;
+
+        } 
+
+
+ }
 
  function clear(){
 
@@ -84,14 +105,24 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 
  popUpElement.setAttribute("style", "display:none;");
 
+ isSpinning = false;
+
  }
  </script>
+
+
 
  <script>
 
  var sectionAnswers = [];
 
+ var isSpinning = false;
+
   function Spin(){ 
+
+  if(isSpinning == false && EmptyBoard == false){
+
+   isSpinning = true;
 
    var sections = 20;
 
@@ -99,7 +130,7 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 
    var ball = document.getElementById("BallID");
 
-   var RandomSection = (Math.floor(Math.random() * sections) + 1); 
+   var RandomSection = (Math.floor(Math.random() * sections) + 1) -1; 
 
    var requiredRotation =(sections - RandomSection) * angle;
 
@@ -107,15 +138,16 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 
    document.getElementById("myCanvas").className = "RotateCanvas";
 
-   var overallRotation = -(requiredRotation  + 990);
+   var overallRotation = -(requiredRotation  + 990) + 5;
 
    ball.removeAttribute('style'); 
 
-   var css = '-webkit-transform: rotate(' + overallRotation  + 'deg);' +
-    '-moz-transform: rotate(' + overallRotation  + 'deg);' ;
+   var css = '-webkit-transform: rotate(' + overallRotation  + 'deg) translate(-10%);' +
+    '-moz-transform: rotate(' + overallRotation  + 'deg) translate(-10%);' ;
 
    var resetcss = '-webkit-transition: -webkit-transform 0s ease-out;' +
    '-moz-transition: -moz-transform 0s ease-out;';
+
 
      ball.setAttribute( 'style', css);
 
@@ -127,9 +159,13 @@ onKeyPress="populateboard()" onKeyUp="populateboard()"><br>
 
    setTimeout(function(){ popup(sectionAnswers[RandomSection]); }, 10000);
 
+    }
+
   }
 
  </script>
+
+
 
 <input type="image" src="Spin.png" name="SpinButton" class="SButton" id="SpinButton"  onClick="Spin();" />
   
@@ -168,9 +204,13 @@ var pieAngle = 2 * Math.PI / sections;
 // how thick you want a segment
 var radius = 200;
 
+var EmptyBoard = true;
+
 
 
 function populateboard() {
+
+TextCase();
 
 context.clearRect(0,0,canvas.width,canvas.height);
 var namearray = [];
@@ -203,6 +243,8 @@ for (var i = 0; i < namearray.length; i++) {
     if (namearray[i] != "") {
 
        valuearray.push(namearray[i]);
+
+       EmptyBoard = false;
     }
 } 
 
@@ -216,7 +258,7 @@ var remaining = sections%valuearray.length;
         context.save();
         context.translate( x, y );
         context.rotate((i*pieAngle));
-        context.font = "16px serif";
+        context.font = "12px serif";
         context.fillStyle = "White"; // red
 
 
@@ -231,12 +273,12 @@ var remaining = sections%valuearray.length;
           if(remaining > 0)
           {
 
-              context.fillText( "Try Again", 100, -10);
+              context.fillText( "Try Again", 70, -10);
               sectionAnswers[i] = "Try Again"; 
               remaining--;
           }
           else{
-                context.fillText( valuearray[answer], 100, -10);
+                context.fillText( valuearray[answer], 70, -10);
                 sectionAnswers[i] = valuearray[answer]; 
                }
          }
